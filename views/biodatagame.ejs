@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="text-center">Biodata on Game <%= data.nameGame %>
+    </h1>
+    <div class="input-form text-center">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Input Username" id="username-input">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Input Email" id="email-input">
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" placeholder="Input Level Account" id="lvlAcc-input">
+        </div>
+        <button type="submit" class="btn btn-primary" id="btnInsert" onclick=handleInputBiodataGame(<%=data.id %>)>Insert</button>
+        <button type="submit" class="btn btn-warning" id="btnEdit" disabled>Submit Edit</button>
+    </div>
+
+    <div class="table-data">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Level Account</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for( let index=0; index < data.biodataGames.length; index++ ) { %>
+                    <tr id="<%= data.biodataGames[index].id %>">
+                        <th scope="row">
+                            <%= index + 1%>
+                        </th>
+                        <td>
+                            <%= data.biodataGames[index].username %>
+                        </td>
+                        <td>
+                            <%= data.biodataGames[index].email %>
+                        </td>
+                        <td>
+                            <%= data.biodataGames[index].levelAccount %>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary" onclick=prepareEditBiodata(<%= data.biodataGames[index].id%>)>Edit</button>
+                            <button type="submit" class="btn btn-danger"
+                                onclick=handleDeleteBiodata(<%= data.biodataGames[index].id%>)>Delete</button>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3 class="text-center"><a href=<%=`/dashboard_game/` %>>< Back to List Game</a></button></h3>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

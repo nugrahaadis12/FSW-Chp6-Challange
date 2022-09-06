@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="text-center">List Game</h1>
+    <div class="input-form text-center">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Input Name Game" id="listgame-input">
+        </div>
+        <button type="submit" class="btn btn-primary" onclick=handleInputNameGame()>Submit</button>
+    </div>
+
+    <div class="table-data">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name Game</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% listGames.forEach(lg=> { %>
+                    <tr>
+                        <th scope="row">
+                            <%= lg.id %>
+                        </th>
+                        <td>
+                            <%= lg.nameGame %>
+                        </td>
+                        <td>
+                            <a href=<%=`/dashboard_game_biodata/${lg.id}` %> > Biodata Game</a>
+                            <a>|</a>
+                            <a href=<%=`/dashboard_game_history/${lg.id}` %> > History Game</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
