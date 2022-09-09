@@ -21,18 +21,7 @@
             <input type="text" class="form-control" placeholder="Input version" id="version-input">
         </div>
         <div class="form-group">
-            <select multiple class="form-control" placeholder="Input Rating" id="rating-input">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-            </select>
+            <input type="number" class="form-control" placeholder="Input Rating" id="rating-input">
         </div>
         <button type="submit" class="btn btn-primary" onclick=handleInputHistoryGame(<%=data.id %>)>Insert</button>
         <button type="submit" class="btn btn-warning" id="btnEdit" disabled>Submit Edit</button>

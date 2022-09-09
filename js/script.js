@@ -111,7 +111,7 @@ const handleInputHistoryGame = async (ListGameId) => {
         body: JSON.stringify({
             update: inputUpdate,
             version: inputVersion,
-            rating: inputLRating,
+            rating: inputRating,
             listGameId: ListGameId
         })
     })
