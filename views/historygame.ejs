@@ -24,7 +24,7 @@
             <input type="number" class="form-control" placeholder="Input Rating" id="rating-input">
         </div>
         <button type="submit" class="btn btn-primary" onclick=handleInputHistoryGame(<%=data.id %>)>Insert</button>
-        <button type="submit" class="btn btn-warning" id="btnEdit" disabled>Submit Edit</button>
+        <button type="submit" class="btn btn-warnin" id="btnEdit" disabled>Submit Edit</button>
     </div>
 
     <div class="table-data">
@@ -55,7 +55,7 @@
                         </td>
                         <td>
                             <button type="submit" class="btn btn-primary" onclick=handleEditHistory()>Edit</button>
-                            <button type="submit" class="btn btn-primary"
+                            <button type="submit" class="btn btn-danger"
                                 onclick=handleDeleteHistory(<%=data.historyGames[index].id%>)>Delete</button>
                         </td>
                     </tr>

@@ -19,6 +19,7 @@ const handleInputNameGame = async () => {
     location.reload()
 }
 
+
 //BIODATA GAME//
 //INSERT BIODATA
 const handleInputBiodataGame = async (ListGameId) => {
