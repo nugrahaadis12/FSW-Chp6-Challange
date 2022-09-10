@@ -19,6 +19,51 @@ const handleInputNameGame = async () => {
     location.reload()
 }
 
+//EDIT A GAME DATA
+//Prepare Edit A List Game
+const prepareEditListGame = (id) => {
+    const trEl = document.getElementById(id)
+
+    // console.log(trEl)
+    document.getElementById("listgame-input").value = trEl.children[1].innerText
+    
+    document.getElementById("btnInsert").disabled = true
+    document.getElementById("btnEdit").disabled = false
+    document.getElementById("btnEdit").setAttribute('onclick', `handleSubmitEditListGame(${id})`)
+}
+
+//Submit Edit History
+const handleSubmitEditListGame = async (id) => {
+    let listGameInput = document.getElementById("listgame-input")
+
+    let ans = confirm('Are you sure edit?')
+    // PUT /history/:id
+    if (ans) {
+        await fetch(`http://localhost:9000/listGame/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nameGame: listGameInput.value,
+            })
+        })
+        location.reload()
+    }
+}
+
+
+//DELETE A GAME DATA
+const handleDeleteListGame = async (id) => {
+    let ans = confirm('Are you sure?')
+    if (ans) {
+        // DELETE /listGame/:id
+        await fetch(`http://localhost:9000/listGame/${id}`, {
+            method: 'DELETE'
+        })
+    }
+    location.reload()
+}
 
 //BIODATA GAME//
 //INSERT BIODATA

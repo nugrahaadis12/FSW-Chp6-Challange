@@ -16,7 +16,8 @@
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Input Name Game" id="listgame-input">
         </div>
-        <button type="submit" class="btn btn-primary" onclick=handleInputNameGame()>Submit</button>
+        <button type="submit" class="btn btn-primary" id="btnInsert" onclick=handleInputNameGame()>Input</button>
+        <button type="submit" class="btn btn-warning" id="btnEdit" disabled>Submit Edit</button>
     </div>
 
     <div class="table-data">
@@ -26,24 +27,32 @@
                     <th scope="col">#</th>
                     <th scope="col">Name Game</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <% listGames.forEach(lg=> { %>
-                    <tr>
+                <% for( let index=0; index < listGames.length; index++ ) { %>
+                    <tr id="<%= listGames[index].id %>">
                         <th scope="row">
-                            <%= lg.id %>
+                            <%= index + 1%>
                         </th>
                         <td>
-                            <%= lg.nameGame %>
+                            <%= listGames[index].nameGame%>
                         </td>
                         <td>
-                            <a href=<%=`/dashboard_game_biodata/${lg.id}` %> > Biodata Game</a>
+                            <a href=<%=`/dashboard_game_biodata/${listGames[index].id}` %> > Biodata Game</a>
                             <a>|</a>
-                            <a href=<%=`/dashboard_game_history/${lg.id}` %> > History Game</a>
+                            <a href=<%=`/dashboard_game_history/${listGames[index].id}` %> > History Game</a>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary"
+                                onclick=prepareEditListGame(<%=listGames[index].id%>)>Edit</button>
+                            <button type="submit" class="btn btn-danger"
+                                onclick=handleDeleteListGame(<%=listGames[index].id%>)>Delete</button>
                         </td>
                     </tr>
-                    <% }) %>
+                    <% } %>
+
             </tbody>
         </table>
     </div>

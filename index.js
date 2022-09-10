@@ -119,6 +119,38 @@ app.get('/listGame', async (req, res) => {
     res.send(data)
 })
 
+// UPDATE
+app.put('/listGame/:id', jsonParser, async (req, res) => {
+    // const menu = await Menu.findOne({
+    //   where:{
+    //     id: req.params.id
+    //   }
+    // })
+
+    try {
+        data = await listGame.findByPk(req.params.id)
+        data.nameGame = req.body.nameGame
+
+        await data.save()
+
+        res.status(202).send(data)
+    } catch (error) {
+        res.status(422).send('UNABLE TO UPDATE DATA')
+    }
+
+})
+
+//DELETE
+app.delete('/listGame/:id', async (req, res) => {
+    try {
+        const data = await listGame.findByPk(req.params.id)
+        data.destroy()
+        res.status(202).send('DELETED')
+    } catch (error) {
+        res.status(422).send('UNABLE TO DELETE DATA')
+    }
+})
+
 ////////////////////////////////////////////////////////////////////////
 
 //PAGE BIODATA//
